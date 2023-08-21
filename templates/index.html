@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Responsive, mobile-first meta tags -->
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="icon"
+      type="icon/svg"
+      sizes="32x32"
+      href="./static/images/plane-solid.svg"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- If style.css was in a subfolder of static, we would've needed to add it to the filename path -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Travelfy</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1><img src="./static/images/app-logo.png" alt="Travelfy app logo" width="110"/> Travelfy</h1>
+      <h5 id="slogan">
+        Your go-to app for a stress-free, musically-immersive travelling
+        experience.
+      </h5>
+    </div>
+
+    <div class="main-container">
+      <div class="top-section">
+        <form id="search-country" action="/" method="POST">
+          <div class="input-and-btn">
+            <input
+            type="text"
+            id="user-input"
+            name="user-input"
+            placeholder="Where are you going to?"
+            autocomplete="off"
+            autofocus
+            />
+            <button type="submit" id="submit-btn">
+              Submit
+            </button>
+          </div>
+          <p id="alert-message" class="alert alert-danger" style="display: none" data-id="{{str_countries}}">Not a valid country name, please type in again and submit.</p>
+        </form>
+      </div>
+
+      <div class="bottom-header">
+        {% if country and track_and_url %}
+        <h5>
+          🎧 Here are the Top 20 most played songs in {{
+          country.title() }} at the moment:
+        </h5>
+        {% endif %}
+      </div>
+      <div class="bottom-section">
+        <div class="bottom-left">
+          {% if country and track_and_url %}
+          <ol>
+            {% for track, url in track_and_url.items() %}
+            <!-- looping through track_name_and_url dictionary key-value pairs -->
+            <li>
+              <i
+                data-url="{{ url }}"
+                class="play-icon fa-sharp fa-regular fa-circle-play"
+                style="color: #a2a5a9"
+              ></i>
+              {{ track }}
+            </li>
+            {% endfor %}
+          </ol>
+          {% endif %}
+        </div>
+        <div class="bottom-right">
+          {% if playlist_cover_url %}
+          <img
+            id="playlist-cover"
+            src="{{playlist_cover_url}}"
+            alt="playlist cover image"
+          />
+          <audio id="audio-player" controls></audio>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p id="credit">
+        Original project design and implementation by
+        <a href="https://github.com/fabalvesfr" target="_blank">@fabalvesfr</a>.
+      </p>
+    </div>
+
+    <!-- App JS -->
+    <script src="/static/script.js"></script>
+
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header,
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.header h1{
+  font-family: "Caveat", sans-serif;
+  font-size: 70px;
+  animation: 1.6s ease-in-out app-name-animation;
+}
+
+@keyframes app-name-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+#slogan {
+  text-align: center;
+}
+
+.input-andn-btn {
+  display:flex;
+  align-items: center;
+  width: auto;
+}
+
+#user-input {
+  background-image: url("/static/images/world.png");
+  background-position: 1%; /* Input box width is 100% */
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  width: 300px;
+  height:30px;
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 60px; /* Padding definition clockwise */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 10px;
+}
+
+#submit-btn {
+  height: 31px;
+  width: 100px;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+  color: white;
+  background-color: #192365;
+  border: 1px solid transparent;
+  box-shadow: 3px 5px 10px 0px rgba(0,0,0,0.26);
+}
+
+#alert-message{
+  color: red;
+  border: none;
+  font-size: 13px;
+  text-align: center;
+}
+
+.bottom-header {
+  text-align: center;
+  margin-top: 15px;
+}
+.bottom-section {
+  margin-top: 15px;
+  display: flex;
+  width: auto;
+}
+
+#audio-player {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.bottom-left {
+  justify-self: flex-start;
+  width: max-content;
+}
+
+.bottom-right {
+  flex-grow: 1; /* Since the .bottom-left container width is equal to the width of its max content, I want my .bottom-right container width to span up until my .bottom-section*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+#playlist-cover {
+  width: 180px;
+  height: 180px;
+}
+
+.play-icon:hover {
+  cursor: pointer;
+}
+
+/* FOOTER STYLES */
+.footer {
+  margin-top: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.footer #credit {
+  font-style: italic;
+}
+
+.footer a {
+  font-style: normal;
+}
+
+/* RESPONSIVE DESIGN: WEB FIRST */
+@media (max-width: 640px) {
+  .bottom-section {
+    flex-direction: column;
+  }
+}

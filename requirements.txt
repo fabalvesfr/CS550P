@@ -1,0 +1,8 @@
+flask
+dotenv
+os
+base64
+requests
+json
+sys
+pycountry
